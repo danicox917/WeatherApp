@@ -1,42 +1,100 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* The Ravenel Bridge Image */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+                      url('https://www.southernliving.com/thmb/2w33q9z3yR561D5xhiVNZHTBh2o=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-856552474-2000-38a2bbc79c0748ec81f9e7e2a9dc81d4.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Keeps the bridge still while you scroll the forecast */
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
 .container {
-    max-width: 400px;
-    margin: 0 auto;
-    text-align: center;
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.5); /* Set the background color to be transparent */
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Adjust the alpha value here for the box shadow transparency */
-    margin-top: 105px;
+  max-width: 450px;
+  width: 90%;
+  text-align: center;
+  padding: 30px;
+  background-color: rgba(0, 0, 0, 0.65); /* Dark transparent theme */
+  color: white;
+  border-radius: 15px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
 }
 
 h1 {
-    font-size: 24px;
+  margin-bottom: 5px;
+  font-size: 1.5rem;
+}
+#temperature {
+  font-size: 4rem;
+  font-weight: bold;
+  margin: 10px 0;
+}
+#description {
+  text-transform: capitalize;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+#precipitation {
+  color: #4dabf7;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
-input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+.forecast-container {
+  display: flex;
+  flex-direction: column; /* Stacks items vertically */
+  gap: 10px;
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  max-height: 400px; /* Optional: adds a scroll if the list gets too long */
+  overflow-y: auto;
 }
 
-button {
-    background-color: #007BFF;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
+.forecast-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr; /* Creates 4 equal columns for alignment */
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 10px 15px;
+  border-radius: 8px;
+  text-align: left;
 }
 
-.weather-info {
-    margin-top: 20px;
+.forecast-item img {
+  width: 40px;
+  height: 40px;
+  justify-self: center; /* Centers icon in its column */
 }
 
-/* Add more styles as needed */
+.rain-text {
+  font-size: 0.85rem;
+  color: #4dabf7;
+  font-weight: bold;
+  text-align: right;
+}
+
+/* Custom scrollbar for vertical scroll */
+.forecast-container::-webkit-scrollbar {
+  width: 6px;
+}
+.forecast-container::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+}
+/* Add this to your style block */
+#dailyForecast .forecast-item {
+    /* Day | Icon | High/Low | Rain % */
+    grid-template-columns: 1.2fr 0.8fr 1.2fr 0.8fr; 
+}
+
+#dailyForecast .rain-text {
+  text-align: right;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /* Keeps long text from breaking the layout */
+}
